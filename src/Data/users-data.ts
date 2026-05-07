@@ -11,9 +11,9 @@ export type User = {
 const UsersData: User[] = [
   {
     id: 1,
-    name: 'علی رضایی',
-    email: 'ali.rezaei@gmail.com',
-    password: 'Ali@1234',
+    name: 'امیررضا حنفی',
+    email: 'amirreza168@gmail.com',
+    password: 'Amir@1234',
     listTodo: {
       todo: ['مطالعه فصل جدید تايب‌اسکریپت', 'طراحی کامپوننت کارت تسک', 'چک کردن لیست خرید'],
       doing: ['پیاده‌سازی Drag & Drop'],
@@ -23,9 +23,9 @@ const UsersData: User[] = [
 
   {
     id: 2,
-    name: 'مریم احمدی',
-    email: 'maryam.ahmadi@yahoo.com',
-    password: 'Maryam#2024',
+    name: 'سهیل مجبوریان',
+    email: 'soheil@gmail.com',
+    password: 'soheil#2024',
     listTodo: {
       todo: ['نوشتن محتوای بلاگ جدید', 'ویرایش عکس‌ها برای اینستاگرام', 'برنامه‌ریزی هفتگی'],
       doing: ['آماده‌سازی ارائه دانشگاه'],
@@ -35,9 +35,9 @@ const UsersData: User[] = [
 
   {
     id: 3,
-    name: 'حسین محمدی',
-    email: 'hossein.mmd@gmail.com',
-    password: 'Hosein*778',
+    name: 'افروز بهروزنیک',
+    email: 'afrooz@gmail.com',
+    password: 'Afrooz*778',
     listTodo: {
       todo: ['تمرین ریکت', 'ساخت یک پروژه کوچک Todo', 'مطالعه Next.js'],
       doing: ['یادگیری Zustand'],
@@ -47,9 +47,9 @@ const UsersData: User[] = [
 
   {
     id: 4,
-    name: 'نگین سادات',
-    email: 'negin.sadat@mail.com',
-    password: 'Negin@999',
+    name: 'شایان علمی',
+    email: 'shayan@mail.com',
+    password: 'shayan@999',
     listTodo: {
       todo: ['خرید وسایل خانه', 'نوشتن لیست کارهای فردا', 'مرتب‌سازی پوشه‌های لپ‌تاپ'],
       doing: ['خواندن کتاب روانشناسی'],

@@ -86,3 +86,7 @@
   --shadow-dark: rgba(0,0,0,0.5);
 }
 
+body{
+  @apply text-base font-Dana text-text-primary bg-bg;
+}
+
