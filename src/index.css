@@ -1,0 +1,88 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Dana';
+  src: url(public/Fonts/Dana/woff2/DanaFaNum-Regular.woff2) format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'DanaMedium';
+  src:
+    local('DanaMedium'),
+    url(public/Fonts/Dana/woff2/DanaFaNum-Medium.woff2) format('woff2');
+
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'DanaDemiBold';
+  src: url(public/Fonts/Dana/woff2/DanaFaNum-DemiBold.woff2) format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MorabbaLight';
+  src: url(public/Fonts/Morabba/woff2/Morabba-Light.woff2) format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MorabbaMedium';
+  src: url(public/Fonts/Morabba/woff2/Morabba-Medium.woff2) format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MorabbaBold';
+  src: url(public/Fonts/Morabba/woff2/Morabba-Bold.woff2) format('woff2');
+  font-display: swap;
+}
+
+@theme {
+
+  /* fonts */
+  --font-Dana: 'Dana';
+  --font-DanaMedium: 'DanaMedium';
+  --font-DanaDemiBold: 'DanaDemiBold';
+  --font-MorabbaLight: 'MorabbaLight';
+  --font-MorabbaMedium: 'MorabbaMedium';
+  --font-MorabbaBold: 'MorabbaBold';
+
+  /* backgrounds */
+  --color-bg: #0D1117;
+  --color-card: #161B22;
+  --color-line: #21262D;
+  --color-border: #30363D;
+
+  /* text */
+  --color-text-primary: #E6EDF3;
+  --color-text-secondary: #8B949E;
+  --color-text-muted: #6E7681;
+
+  /* primary buttons */
+  --color-primary: #238636;
+  --color-primary-hover: #2EA043;
+
+  /* status */
+  --color-status-complete: #2EA043;
+  --color-status-important: #F85149;
+  --color-status-normal: #58A6FF;
+
+  /* actions */
+  --color-action-delete: #F85149;
+  --color-action-edit: #D29922;
+  --color-action-add: #58A6FF;
+
+  /* hover */
+  --color-hover-item: #1F242C;
+
+  /* scrollbar */
+  --color-scrollbar-track: #161B22;
+  --color-scrollbar-thumb: #30363D;
+  --color-scrollbar-thumb-hover: #484F58;
+
+  /* shadows */
+  --shadow-light: rgba(0,0,0,0.3);
+  --shadow-dark: rgba(0,0,0,0.5);
+}
+
