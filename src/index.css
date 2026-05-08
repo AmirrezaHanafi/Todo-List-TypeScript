@@ -37,6 +37,21 @@
   src: url(public/Fonts/Morabba/woff2/Morabba-Bold.woff2) format('woff2');
   font-display: swap;
 }
+@font-face {
+  font-family: 'Inter';
+  src: url(public/Fonts/Inter/Inter_24pt-Regular.ttf) format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'InterBold';
+  src: url(public/Fonts/Inter/Inter_24pt-Bold.ttf) format('woff2');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'InterExtraBold';
+  src: url(public/Fonts/Inter/Inter_24pt-ExtraBold.ttf) format('woff2');
+  font-display: swap;
+}
 
 @theme {
 
@@ -47,6 +62,9 @@
   --font-MorabbaLight: 'MorabbaLight';
   --font-MorabbaMedium: 'MorabbaMedium';
   --font-MorabbaBold: 'MorabbaBold';
+  --font-Inter: 'Inter';
+  --font-InterBold: 'InterBold';
+  --font-InterExtraBold: 'InterExtraBold';
 
   /* backgrounds */
   --color-bg: #0D1117;

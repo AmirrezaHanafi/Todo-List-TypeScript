@@ -1,5 +1,8 @@
+import { useParams } from 'react-router-dom'
+
 type GroupBoardProps = {}
 
 export default function GroupBoard({}: GroupBoardProps) {
-  return <div>hi</div>
+  const { section } = useParams()
+  return <div>{section}</div>
 }

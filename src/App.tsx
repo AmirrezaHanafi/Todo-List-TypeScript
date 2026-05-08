@@ -1,16 +1,20 @@
 import { Routes, Route } from 'react-router-dom'
 import RootLayout from './layout/RootLayout.tsx'
 import RootBoard from './features/RootBoard/components/RootBoard.tsx'
-import PersonBoard from './features/PersonBoard/PersonBoard.tsx'
+import PersonsBoard from './features/PersonBoard/PersonsBoard.tsx'
+import GroupBoard from './features/GroupBoard/GroupBoard.tsx'
+import NotFound from './features/404/NotFound.tsx'
 export default function App() {
   return (
     <>
       <Routes>
         <Route element={<RootLayout />}>
-          <Route index element={<RootBoard />} />
-          <Route path="/board/:id" element={<PersonBoard />} />
+          <Route index={'/board'} element={<RootBoard />} />
+          <Route path="/board/:section" element={<GroupBoard />} />
+          <Route path="/board/:section/:id" element={<PersonsBoard />} />
 
           <Route />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </>

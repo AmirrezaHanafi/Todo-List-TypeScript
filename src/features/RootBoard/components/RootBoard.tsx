@@ -1,23 +1,24 @@
-import UsersData from '../../../Data/users-data.ts'
-import Cart from './Cart.tsx'
+import { useUserStore } from '../../../stores/user-store.ts'
+import { sections } from '../../../Data/users-data.ts'
+import SectionCart from '../../GroupBoard/SectionCart.tsx'
 
 export default function RootBoard() {
+  const UsersData = useUserStore(state => state.userData)
+  const usersOfFrontEnd = UsersData.filter(user => user.section === 'FrontEnd')
+  const usersOfBackEnd = UsersData.filter(user => user.section === 'BackEnd')
+  const usersOfNetworkSecurity = UsersData.filter(user => user.section === 'NetworkSecurity')
+  const usersOfDataAnalysis = UsersData.filter(user => user.section === 'DataAnalysis')
+  const usersOfHumanResources = UsersData.filter(user => user.section === 'HumanResources')
+  const usersOfDesign = UsersData.filter(user => user.section === 'Design')
   return (
-    <div className=" flex items-center justify-between  mx-auto px-10 mt-20">
-      <div className="min-h-100 bg-line rounded-lg  py-6 px-3">
-        <h2 className="font-DanaDemiBold text-2xl"> کارت های شخصی</h2>
-        <div className="grid grid-cols-2 gap-4 mt-3">
-          {UsersData.map(user => (
-            <Cart name={user.name} id={user.id} />
-          ))}
-        </div>
+    <div className=" border-2 border-border min-h-100 bg-line mx-6 rounded-lg p-6 space-y-4 ">
+      <h1 className="font-MorabbaBold text-3xl"> کدوم بخش بریم؟</h1>
+      <div className="flex flex-wrap space-x-2  mt-15 ">
+        {sections.map((section, index) => (
+          <SectionCart key={index} section={section} />
+        ))}
       </div>
-      <span className="bg-border w-px h-100"></span>
-      <div className=" min-h-100 bg-line rounded-lg  py-6 px-3 ">
-        <h2 className="font-DanaDemiBold text-2xl"> کارت های گروهی</h2>{' '}
-      </div>
-
-      {/*<h1>لیست بردهای کاربران</h1>*/}
     </div>
   )
 }
+99

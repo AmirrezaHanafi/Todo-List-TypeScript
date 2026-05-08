@@ -5,7 +5,7 @@ export default function RootLayout() {
   return (
     <div className="min-h-screen relative  min-w-screen overflow-x-hidden">
       <Header />
-      <main>
+      <main className="mt-20">
         <Outlet />
       </main>
       <Footer />
