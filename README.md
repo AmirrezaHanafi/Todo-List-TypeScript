@@ -1,75 +1,140 @@
-# React + TypeScript + Vite
+# 📝 React Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+یک اپلیکیشن مدیریت وظایف (To-Do List) مدرن با React، TypeScript و Zustand
 
-Currently, two official plugins are available:
+## ✨ ویژگی‌ها
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- ✅ افزودن، ویرایش و حذف وظایف
+- 🔄 انتقال وظایف بین سه حالت: Todo، Doing، Done
+- 📱 رابط کاربری ریسپانسیو با Tailwind CSS
+- 🎯 مدیریت state با Zustand
+- ✔️ اعتبارسنجی فرم با Zod و React Hook Form
+- 🎨 Modal های native برای افزودن وظایف
+- ⌨️ پشتیبانی از کلیدهای میانبر (Enter برای ذخیره، Escape برای لغو)
+- 💾 ذخیره‌سازی خودکار در localStorage
 
-## React Compiler
+## 🚀 نصب و راه‌اندازی
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+### پیش‌نیازها
 
-Note: This will impact Vite dev & build performances.
+- Node.js (نسخه 16 یا بالاتر)
+- npm، pnpm یا yarn
 
-## Expanding the ESLint configuration
+### مراحل نصب
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. کلون کردن پروژه:
+```bash
+git clone https://github.com/your-username/react-todo-app.git
+cd react-todo-app
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+2. نصب وابستگی‌ها:
+bash
+npm install
+# یا
+pnpm install
+# یا
+yarn install
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+3. اجرای پروژه:
+bash
+npm run dev
+# یا
+pnpm dev
+# یا
+yarn dev
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4. باز کردن در مرورگر:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+http://localhost:5173
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🛠️ تکنولوژی‌های استفاده شده
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **React 18** - کتابخانه UI
+- **TypeScript** - Type Safety
+- **Vite** - Build Tool
+- **Zustand** - State Management
+- **Zod** - Schema Validation
+- **React Hook Form** - Form Management
+- **Tailwind CSS** - Styling
+- **React Router** - Routing
+
+#
+
+## 🎯 نحوه استفاده
+
+### افزودن وظیفه جدید
+1. روی دکمه "افزودن وظیفه" کلیک کنید
+2. عنوان وظیفه را وارد کنید (حداقل 1 و حداکثر 100 کاراکتر)
+3. Enter بزنید یا روی "ذخیره" کلیک کنید
+
+### ویرایش وظیفه
+1. روی آیکون ویرایش (✏️) کلیک کنید
+2. متن جدید را وارد کنید
+3. Enter بزنید یا خارج از input کلیک کنید
+
+### انتقال وظیفه
+- از **Todo** به **Doing**: روی آیکون انتقال کلیک کنید
+- از **Doing** به **Done**: روی آیکون انتقال کلیک کنید
+
+### حذف وظیفه
+روی آیکون حذف (🗑️) کلیک کنید
+
+## 🔧 تنظیمات
+
+### Zustand Store
+
+Store شامل متدهای زیر است:
+
+- `addItem(userId, listType, title)` - افزودن وظیفه جدید
+- `updateItem(userId, listType, itemId, newTitle)` - ویرایش وظیفه
+- `deleteItem(userId, listType, itemId)` - حذف وظیفه
+- `transferItem(userId, currentListType, overListType, itemId)` - انتقال وظیفه
+
+### Validation Schema
+
+typescript
+const taskSchema = z.object({
+  title: z
+.string()
+.min(1, 'عنوان نمی‌تواند خالی باشد')
+.max(100, 'عنوان نمی‌تواند بیشتر از 100 کاراکتر باشد')
+})
+
+## 🤝 مشارکت
+
+برای مشارکت در این پروژه:
+
+1. Fork کنید
+2. یک branch جدید بسازید (`git checkout -b feature/amazing-feature`)
+3. تغییرات خود را commit کنید (`git commit -m 'Add some amazing feature'`)
+4. به branch خود push کنید (`git push origin feature/amazing-feature`)
+5. یک Pull Request باز کنید
+
+## 📝 لایسنس
+
+این پروژه تحت لایسنس MIT منتشر شده است.
+
+## 👤 سازنده
+
+نام شما - [@your-twitter](https://twitter.com/your-twitter)
+
+لینک پروژه: [https://github.com/your-username/react-todo-app](https://github.com/your-username/react-todo-app)
+
+## 🙏 تشکر
+
+- [React](https://reactjs.org/)
+- [Zustand](https://github.com/pmndrs/zustand)
+- [Zod](https://github.com/colinhacks/zod)
+- [Tailwind CSS](https://tailwindcss.com/)
+
+
+این README شامل:
+- توضیحات کامل ویژگی‌ها
+- راهنمای نصب گام‌به‌گام
+- لیست تکنولوژی‌ها
+- ساختار پروژه
+- راهنمای استفاده
+- مستندات API
+- راهنمای مشارکت
+
+می‌تونی بخش‌های مربوط به username، لینک‌ها و اطلاعات شخصی رو با اطلاعات خودت جایگزین کنی.
