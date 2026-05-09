@@ -24,7 +24,7 @@ export default function PersonsBoard() {
       </div>
       <div className="grid grid-cols-3  gap-x-2 ">
         <div className="bg-card rounded-xl p-4 min-h-100">
-          <div className="text-left flex items-center justify-end gap-x-3">
+          <div className=" flex items-center justify-between gap-x-3">
             <button
               onClick={() => {
                 modalRef.current?.showModal()
@@ -32,7 +32,7 @@ export default function PersonsBoard() {
               className="p-2 cursor-pointer rounded-full hover:bg-hover-item transition-colors "
             >
               {' '}
-              <PlusIcon className="size-4" />
+              <PlusIcon className="size-6" />
             </button>
             <span className="text-left font-InterExtraBold text-2xl">ToDo</span>
           </div>
