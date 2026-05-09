@@ -3,7 +3,7 @@ import LinkedinIcon from './icons/LinkedinIcon.tsx'
 
 export default function Footer() {
   return (
-    <div className="w-full absolute bottom-0 flex flex-col items-centere text-xs p-3 text-center space-y-3 text-text-secondary">
+    <div className="w-full mt-10 border-t-2 border-border flex flex-col items-centere text-xs p-3 text-center space-y-3 text-text-secondary">
       <span className="text-sm">اینجا ایرانه هیچ حقی محفوظ نیست راحت باش !</span>
       <div className="flex items-center justify-center gap-x-2">
         <a href="https://github.com/AmirrezaHanafi">

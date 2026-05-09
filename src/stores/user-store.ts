@@ -8,12 +8,31 @@ type UseUserStore = {
   addUser: (user: User) => void
   removeUser: (id: number) => void
   editUser: (id: number) => void
+  removeItem: (userId: number, listType: keyof User['listTodo'], itemId: string) => void
 }
+
+const STORAGE_KEY = 'user-data'
+
+const getInitialUsers = (): User[] => {
+  const stored = localStorage.getItem(STORAGE_KEY)
+
+  if (stored) {
+    return JSON.parse(stored)
+  }
+
+  // generate users only first time
+  const users: User[] = [...UsersData]
+
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(users))
+  return users
+}
+
+const initialUsers = getInitialUsers()
 
 export const useUserStore = create<UseUserStore>()(
   persist(
     immer(set => ({
-      userData: UsersData,
+      userData: initialUsers,
 
       addUser(user) {
         set(state => {
@@ -32,6 +51,14 @@ export const useUserStore = create<UseUserStore>()(
 
       editUser(id) {
         console.log(id)
+      },
+      removeItem(userId, listType, itemId) {
+        set(state => {
+          const user = state.userData.find(u => u.id === userId)
+          if (user) {
+            user.listTodo[listType] = user.listTodo[listType].filter(item => item.id !== itemId)
+          }
+        })
       }
     })),
     {

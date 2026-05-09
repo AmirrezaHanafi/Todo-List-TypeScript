@@ -11,27 +11,18 @@ export type User = {
   listTodo: List
 }
 
-const randomTasks = () => ({
-  todo: [
-    'مطالعه فصل جدید تایپ‌اسکریپت',
-    'طراحی کامپوننت جدید',
-    'مرور کدهای قبلی پروژه',
-    'نوشتن لیست کارهای روز',
-    'یادگیری کتابخانه جدید'
-  ].slice(0, Math.floor(Math.random() * 3) + 2),
+const randomTasks = (): List => ({
+  todo: ['مطالعه فصل جدید تایپ‌اسکریپت', 'طراحی کامپوننت جدید', 'مرور کدهای قبلی پروژه', 'نوشتن لیست کارهای روز', 'یادگیری کتابخانه جدید']
+    .slice(0, Math.floor(Math.random() * 3) + 2)
+    .map(t => ({ id: crypto.randomUUID(), title: t })),
 
-  doing: ['پیاده‌سازی Drag & Drop', 'تمرین Zustand', 'تست عملکرد UI', 'نوشتن تست یونیت'].slice(
-    0,
-    Math.floor(Math.random() * 2) + 1
-  ),
+  doing: ['پیاده‌سازی Drag & Drop', 'تمرین Zustand', 'تست عملکرد UI', 'نوشتن تست یونیت']
+    .slice(0, Math.floor(Math.random() * 2) + 1)
+    .map(t => ({ id: crypto.randomUUID(), title: t })),
 
-  done: [
-    'راه‌اندازی پروژه',
-    'نصب Tailwind',
-    'بهینه‌سازی استایل',
-    'رفع باگ‌های جزئی',
-    'مرتب‌سازی ساختار پوشه‌ها'
-  ].slice(0, Math.floor(Math.random() * 3) + 1)
+  done: ['راه‌اندازی پروژه', 'نصب Tailwind', 'بهینه‌سازی استایل', 'رفع باگ‌های جزئی', 'مرتب‌سازی ساختار پوشه‌ها']
+    .slice(0, Math.floor(Math.random() * 3) + 1)
+    .map(t => ({ id: crypto.randomUUID(), title: t }))
 })
 
 const rolesBySection: Record<string, string[]> = {
@@ -63,30 +54,9 @@ const namesFirst = [
   'آراد',
   'سپهر'
 ]
-const namesLast = [
-  'کریمی',
-  'بهزادی',
-  'مرادی',
-  'شریفی',
-  'یزدانی',
-  'موسوی',
-  'اکبری',
-  'محمدی',
-  'جعفری',
-  'فرجی',
-  'نیکفر',
-  'قاسمی',
-  'رحمانی'
-]
+const namesLast = ['کریمی', 'بهزادی', 'مرادی', 'شریفی', 'یزدانی', 'موسوی', 'اکبری', 'محمدی', 'جعفری', 'فرجی', 'نیکفر', 'قاسمی', 'رحمانی']
 
-export const sections = [
-  'FrontEnd',
-  'BackEnd',
-  'NetworkSecurity',
-  'DataAnalysis',
-  'HumanResources',
-  'Design'
-]
+export const sections = ['FrontEnd', 'BackEnd', 'NetworkSecurity', 'DataAnalysis', 'HumanResources', 'Design']
 
 const generateUser = (id: number, section: string): User => {
   const f = namesFirst[Math.floor(Math.random() * namesFirst.length)]
@@ -150,12 +120,7 @@ const UsersData: User[] = [
   }
 ]
 for (const section of sections) {
-  const numberOfPeople =
-    section === 'FrontEnd' || section === 'BackEnd'
-      ? 10
-      : section === 'NetworkSecurity' || section === 'DataAnalysis'
-        ? 8
-        : 7
+  const numberOfPeople = section === 'FrontEnd' || section === 'BackEnd' ? 10 : section === 'NetworkSecurity' || section === 'DataAnalysis' ? 8 : 7
 
   for (let i = 0; i < numberOfPeople; i++) {
     UsersData.push(generateUser(currentId++, section))

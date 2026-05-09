@@ -9,7 +9,7 @@ export default function App() {
     <>
       <Routes>
         <Route element={<RootLayout />}>
-          <Route index={'/board'} element={<RootBoard />} />
+          <Route index element={<RootBoard />} />
           <Route path="/board/:section" element={<GroupBoard />} />
           <Route path="/board/:section/:id" element={<PersonsBoard />} />
 

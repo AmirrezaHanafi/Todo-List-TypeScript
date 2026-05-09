@@ -1,5 +1,5 @@
 export type List = {
-  todo: string[]
-  doing: string[]
-  done: string[]
+  todo: { id: string; title: string }[]
+  doing: { id: string; title: string }[]
+  done: { id: string; title: string }[]
 }
