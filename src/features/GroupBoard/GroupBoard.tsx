@@ -1,12 +1,13 @@
 import { Link, useParams } from 'react-router-dom'
 import PersonCart from '../PersonBoard/PersonCart.tsx'
-import UsersData from '../../Data/users-data.ts'
 import ArrowLeft from '../../components/icons/ArrowLeft.tsx'
+import { useUserStore } from '../../stores/user-store.ts'
 
 type GroupBoardProps = {}
 
 export default function GroupBoard({}: GroupBoardProps) {
   const { section } = useParams()
+  const UsersData = useUserStore(state => state.userData)
   const usersOfThisSection = UsersData.filter(user => user.section === section)
   return (
     <div className=" border-2 border-border min-h-100 bg-line mx-6 rounded-lg p-6 space-y-4  ">

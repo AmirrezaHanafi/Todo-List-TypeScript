@@ -2,11 +2,14 @@ import { Link, useParams } from 'react-router-dom'
 import { useUserStore } from '../../stores/user-store.ts'
 import ArrowLeft from '../../components/icons/ArrowLeft.tsx'
 import ItemCart from './ItemCart.tsx'
+import PlusIcon from '../../components/icons/PlusIcon.tsx'
+import { useRef } from 'react'
+import CreateModal from '../../components/Modals/CreateModal.tsx'
 
 export default function PersonsBoard() {
   const UsersData = useUserStore(state => state.userData)
   const { id, section } = useParams()
-
+  const modalRef = useRef<HTMLDialogElement | null>(null)
   const user = UsersData.find(u => u.id === Number(id))
 
   if (!user) return <div>کاربر پیدا نشد</div>
@@ -20,8 +23,17 @@ export default function PersonsBoard() {
         </Link>
       </div>
       <div className="grid grid-cols-3  gap-x-2 ">
-        <div className="bg-card rounded-xl p-4">
-          <div className="text-center">
+        <div className="bg-card rounded-xl p-4 min-h-100">
+          <div className="text-left flex items-center justify-end gap-x-3">
+            <button
+              onClick={() => {
+                modalRef.current?.showModal()
+              }}
+              className="p-2 cursor-pointer rounded-full hover:bg-hover-item transition-colors "
+            >
+              {' '}
+              <PlusIcon className="size-4" />
+            </button>
             <span className="text-left font-InterExtraBold text-2xl">ToDo</span>
           </div>
           <ul className="mt-3 space-y-2">
@@ -30,8 +42,8 @@ export default function PersonsBoard() {
             ))}
           </ul>
         </div>
-        <div className="bg-card rounded-xl p-4">
-          <div className="text-center">
+        <div className="bg-card rounded-xl p-4 min-h-100">
+          <div className="text-left">
             <span className="text-left font-InterExtraBold text-2xl">Doing</span>
           </div>
           <ul className="mt-3 space-y-2">
@@ -40,8 +52,8 @@ export default function PersonsBoard() {
             ))}
           </ul>
         </div>
-        <div className="bg-card rounded-xl p-4">
-          <div className="text-center">
+        <div className="bg-card rounded-xl p-4 min-h-100">
+          <div className="text-left">
             <span className="text-left font-InterExtraBold text-2xl">Done</span>
           </div>
           <ul className="mt-3 space-y-2">
@@ -51,6 +63,7 @@ export default function PersonsBoard() {
           </ul>
         </div>
       </div>
+      <CreateModal ref={modalRef} />
     </div>
   )
 }

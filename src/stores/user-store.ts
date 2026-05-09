@@ -9,6 +9,7 @@ type UseUserStore = {
   removeUser: (id: number) => void
   editUser: (id: number) => void
   removeItem: (userId: number, listType: keyof User['listTodo'], itemId: string) => void
+  addItem: (userId: number, item: string) => void
 }
 
 const STORAGE_KEY = 'user-data'
@@ -57,6 +58,15 @@ export const useUserStore = create<UseUserStore>()(
           const user = state.userData.find(u => u.id === userId)
           if (user) {
             user.listTodo[listType] = user.listTodo[listType].filter(item => item.id !== itemId)
+          }
+        })
+      },
+      addItem(userId, item) {
+        set(state => {
+          const objOfItem = { id: globalThis.crypto.randomUUID(), title: item }
+          const user = state.userData.find(u => u.id === userId)
+          if (user) {
+            user.listTodo.todo.push(objOfItem)
           }
         })
       }
