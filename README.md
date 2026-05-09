@@ -13,6 +13,9 @@
 - ⌨️ پشتیبانی از کلیدهای میانبر (Enter برای ذخیره، Escape برای لغو)
 - 💾 ذخیره‌سازی خودکار در localStorage
 
+- در حال توسعه :
+  *افزودن و حذف کردن کارکنان هر بخش
+   
 ## 🚀 نصب و راه‌اندازی
 
 ### پیش‌نیازها
@@ -110,31 +113,11 @@ const taskSchema = z.object({
 4. به branch خود push کنید (`git push origin feature/amazing-feature`)
 5. یک Pull Request باز کنید
 
-## 📝 لایسنس
 
-این پروژه تحت لایسنس MIT منتشر شده است.
 
-## 👤 سازنده
 
-نام شما - [@your-twitter](https://twitter.com/your-twitter)
-
-لینک پروژه: [https://github.com/your-username/react-todo-app](https://github.com/your-username/react-todo-app)
-
-## 🙏 تشکر
 
 - [React](https://reactjs.org/)
 - [Zustand](https://github.com/pmndrs/zustand)
 - [Zod](https://github.com/colinhacks/zod)
 - [Tailwind CSS](https://tailwindcss.com/)
-
-
-این README شامل:
-- توضیحات کامل ویژگی‌ها
-- راهنمای نصب گام‌به‌گام
-- لیست تکنولوژی‌ها
-- ساختار پروژه
-- راهنمای استفاده
-- مستندات API
-- راهنمای مشارکت
-
-می‌تونی بخش‌های مربوط به username، لینک‌ها و اطلاعات شخصی رو با اطلاعات خودت جایگزین کنی.
