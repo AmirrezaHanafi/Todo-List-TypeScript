@@ -13,8 +13,8 @@ export default function PersonCart({ user, section }: CartProps) {
   const progressPercent = Math.round((user.listTodo.done.length / total) * 100)
   return (
     <Link to={`/board/${section}/${user.id}`}>
-      <div className="p-4 group shadow-dark  min-h-30 min-w-80  hover:bg-hover-item flex flex-col justify-between  transition-colors duration-300 bg-card text-text-primary  rounded-md">
-        <div className="flex items-center justify-between ">
+      <div className="p-4 group shadow-dark  min-h-30 min-w-60  hover:bg-hover-item flex flex-col justify-between  transition-colors duration-300 bg-card text-text-primary  rounded-md">
+        <div className="flex gap-x-1 items-center justify-between ">
           <div className="flex items-center space-x-2 ">
             <span className="font-DanaDemiBold text-xl">{user.name} </span>
           </div>

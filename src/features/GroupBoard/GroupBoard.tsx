@@ -18,7 +18,7 @@ export default function GroupBoard({}: GroupBoardProps) {
           بازگشت <ArrowLeft className="size-6" />
         </Link>
       </div>
-      <div className="grid grid-cols-4 space-x-2 space-y-2  mt-15 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 space-x-2 space-y-2  mt-15 ">
         {usersOfThisSection.map(user => (
           <PersonCart key={user.id} user={user} section={section} />
         ))}

@@ -72,24 +72,24 @@ export default function ItemCart({ list, listType, itemId }: ItemCartProps) {
           className="flex-1 bg-hover-item border border-border rounded px-2 py-1 outline-none text-text-primary"
         />
       ) : (
-        <span>{list}</span>
+        <span className="text-xs md:text-base">{list}</span>
       )}
 
       <div className="gap-x-2 ">
-        <button onClick={handleEdit} className="p-2 bg-transparent hover:bg-action-edit transition-colors rounded-md cursor-pointer">
-          <PencilIcon className="  size-4  text-white" />
+        <button onClick={handleEdit} className="p-px md:p-2 bg-transparent hover:bg-action-edit transition-colors rounded-md cursor-pointer">
+          <PencilIcon className="  size-3 md:size-4  text-white" />
         </button>
         <button
           onClick={() => transferItem(userId, listType, targetList, itemId)}
-          className={`${listType === 'done' ? 'hidden' : ''} p-2 bg-transparent hover:bg-primary transition-colors rounded-md cursor-pointer`}
+          className={`${listType === 'done' ? 'hidden' : ''} p-px mx-2 md:p-2 bg-transparent hover:bg-primary transition-colors rounded-md cursor-pointer`}
         >
-          <TickIcon className="  size-4  text-white" />
+          <TickIcon className="  size-3 md:size-4  text-white" />
         </button>
         <button
           onClick={() => removeItem(userId, listType, itemId)}
-          className="p-2 bg-transparent hover:bg-action-delete transition-colors rounded-md cursor-pointer"
+          className="p-px md:p-2 bg-transparent hover:bg-action-delete transition-colors rounded-md cursor-pointer"
         >
-          <DeleteIcon className="  size-4  text-white" />
+          <DeleteIcon className="  size-3 md:size-4  text-white" />
         </button>
       </div>
     </li>

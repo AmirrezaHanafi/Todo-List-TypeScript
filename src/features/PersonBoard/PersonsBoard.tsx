@@ -16,13 +16,16 @@ export default function PersonsBoard() {
 
   return (
     <div className="  border-2 border-border  bg-line mx-6 rounded-lg p-6   ">
-      <div className=" flex items-center justify-between mb-5 ">
-        <span className="font-DanaDemiBold text-3xl">صفحه برنامه ریزی {user.name}</span>
-        <Link to={`/board/${section}`} className="flex items-center gap-x-2 px-4 py-2 bg-card/50 rounded-md transition-all hover:bg-card/90 ">
-          بازگشت به بخش <ArrowLeft className="size-6" />
+      <div className=" flex items-center justify-between mb-5 gap-x-1 ">
+        <span className="font-DanaDemiBold text-lg md:text-3xl">صفحه برنامه ریزی {user.name}</span>
+        <Link
+          to={`/board/${section}`}
+          className="flex text-sm items-center gap-x-2 px-2 md:px-4 py-2 bg-card/50 rounded-md transition-all hover:bg-card/90 "
+        >
+          بازگشت به بخش <ArrowLeft className="size-5 md:size-6" />
         </Link>
       </div>
-      <div className="grid grid-cols-3  gap-x-2 ">
+      <div className="grid grid-cols-1 lg:grid-cols-3  gap-2 ">
         <div className="bg-card rounded-xl p-4 min-h-100">
           <div className=" flex items-center justify-between gap-x-3">
             <button
@@ -34,7 +37,7 @@ export default function PersonsBoard() {
               {' '}
               <PlusIcon className="size-6" />
             </button>
-            <span className="text-left font-InterExtraBold text-2xl">ToDo</span>
+            <span className="text-left font-InterExtraBold text-lg md:text-2xl">ToDo</span>
           </div>
           <ul className="mt-3 space-y-2">
             {user.listTodo.todo.map((listItem, index) => (
@@ -44,7 +47,7 @@ export default function PersonsBoard() {
         </div>
         <div className="bg-card rounded-xl p-4 min-h-100">
           <div className="text-left">
-            <span className="text-left font-InterExtraBold text-2xl">Doing</span>
+            <span className="text-left font-InterExtraBold text-lg md:text-2xl">Doing</span>
           </div>
           <ul className="mt-3 space-y-2">
             {user.listTodo.doing.map((doingItem, index) => (
@@ -54,7 +57,7 @@ export default function PersonsBoard() {
         </div>
         <div className="bg-card rounded-xl p-4 min-h-100">
           <div className="text-left">
-            <span className="text-left font-InterExtraBold text-2xl">Done</span>
+            <span className="text-left font-InterExtraBold text-lg md:text-2xl">Done</span>
           </div>
           <ul className="mt-3 space-y-2">
             {user.listTodo.done.map((doneItem, index) => (
