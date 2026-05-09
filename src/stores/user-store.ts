@@ -10,6 +10,8 @@ type UseUserStore = {
   editUser: (id: number) => void
   removeItem: (userId: number, listType: keyof User['listTodo'], itemId: string) => void
   addItem: (userId: number, item: string) => void
+  updateItem: (userId: number, listType: keyof User['listTodo'], itemId: string, newTitle: string) => void
+  transferItem: (userId: number, currentListType: keyof User['listTodo'], overListType: keyof User['listTodo'], itemId: string) => void
 }
 
 const STORAGE_KEY = 'user-data'
@@ -68,6 +70,36 @@ export const useUserStore = create<UseUserStore>()(
           if (user) {
             user.listTodo.todo.push(objOfItem)
           }
+        })
+      },
+      updateItem(userId, listType, itemId, newTitle) {
+        set(state => {
+          const user = state.userData.find(u => u.id === userId)
+          if (!user) return state
+
+          const itemIndex = user.listTodo[listType].findIndex(item => item.id === itemId)
+          if (itemIndex === -1) return state
+
+          user.listTodo[listType][itemIndex].title = newTitle
+        })
+      },
+      transferItem(userId, currentListType, overListType, itemId) {
+        if (currentListType === 'done') {
+          return
+        }
+        set(state => {
+          const user = state.userData.find(u => u.id === userId)
+          if (!user) return state
+          const item = user.listTodo[currentListType].find(u => u.id === itemId)
+          if (!item) {
+            return state
+          }
+          // delete from current
+          user.listTodo[currentListType].splice(
+            user.listTodo[currentListType].findIndex(item => item.id === itemId),
+            1
+          )
+          user.listTodo[overListType].push(item)
         })
       }
     })),

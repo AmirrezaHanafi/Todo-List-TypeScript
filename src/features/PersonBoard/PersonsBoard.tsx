@@ -38,7 +38,7 @@ export default function PersonsBoard() {
           </div>
           <ul className="mt-3 space-y-2">
             {user.listTodo.todo.map((listItem, index) => (
-              <ItemCart key={index} list={listItem.title} listId={listItem.id} listType={'todo'} />
+              <ItemCart key={index} list={listItem.title} itemId={listItem.id} listType={'todo'} />
             ))}
           </ul>
         </div>
@@ -48,7 +48,7 @@ export default function PersonsBoard() {
           </div>
           <ul className="mt-3 space-y-2">
             {user.listTodo.doing.map((doingItem, index) => (
-              <ItemCart key={index} list={doingItem.title} listId={doingItem.id} listType={'doing'} />
+              <ItemCart key={index} list={doingItem.title} itemId={doingItem.id} listType={'doing'} />
             ))}
           </ul>
         </div>
@@ -58,7 +58,7 @@ export default function PersonsBoard() {
           </div>
           <ul className="mt-3 space-y-2">
             {user.listTodo.done.map((doneItem, index) => (
-              <ItemCart key={index} list={doneItem.title} listId={doneItem.id} listType={'done'} />
+              <ItemCart key={index} list={doneItem.title} itemId={doneItem.id} listType={'done'} />
             ))}
           </ul>
         </div>

@@ -7,7 +7,7 @@ import { useUserStore } from '../../stores/user-store.ts'
 import { useParams } from 'react-router-dom'
 
 const taskSchema = z.object({
-  title: z.string().min(3, 'عنوان تسک الزامی است').max(100, 'عنوان نباید بیشتر از ۱۰۰ کاراکتر باشد')
+  title: z.string().min(3, 'عنوان تسک الزامی است(حدقل 3 کاراکتر)').max(100, 'عنوان نباید بیشتر از ۱۰۰ کاراکتر باشد')
 })
 
 type TaskFormData = z.infer<typeof taskSchema>
