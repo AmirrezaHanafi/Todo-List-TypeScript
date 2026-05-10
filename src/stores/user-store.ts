@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import UsersData, { type User } from '../Data/users-data'
+import UsersData, { rolesBySection, type User } from '../Data/users-data'
 import { persist } from 'zustand/middleware'
 import { immer } from 'zustand/middleware/immer'
 

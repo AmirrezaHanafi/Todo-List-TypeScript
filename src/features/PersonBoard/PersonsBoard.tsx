@@ -4,7 +4,7 @@ import ArrowLeft from '../../components/icons/ArrowLeft.tsx'
 import ItemCart from './ItemCart.tsx'
 import PlusIcon from '../../components/icons/PlusIcon.tsx'
 import { useRef } from 'react'
-import CreateModal from '../../components/Modals/CreateModal.tsx'
+import CreateItemModal from '../../components/Modals/CreateItemModal.tsx'
 
 export default function PersonsBoard() {
   const UsersData = useUserStore(state => state.userData)
@@ -66,7 +66,7 @@ export default function PersonsBoard() {
           </ul>
         </div>
       </div>
-      <CreateModal ref={modalRef} />
+      <CreateItemModal ref={modalRef} />
     </div>
   )
 }

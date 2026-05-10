@@ -16,7 +16,7 @@ type CreateModalProps = {
   ref: RefObject<HTMLDialogElement | null>
 }
 
-export default function CreateModal({ ref }: CreateModalProps) {
+export default function CreateItemModal({ ref }: CreateModalProps) {
   const { id } = useParams()
   const finalId = +id!
   const addItem = useUserStore(state => state.addItem)

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import AvatarIcon from '../../components/icons/AvatarIcon.tsx'
 import type { User } from '../../Data/users-data.ts'
+import DeleteIcon from '../../components/icons/DeleteIcon.tsx'
+import { useUserStore } from '../../stores/user-store.ts'
 
 type CartProps = {
   user: User
@@ -11,12 +13,25 @@ export default function PersonCart({ user, section }: CartProps) {
   const total = user.listTodo.todo.length + user.listTodo.doing.length + user.listTodo.done.length
   const doingOrDone = user.listTodo.doing.length + user.listTodo.done.length
   const progressPercent = Math.round((user.listTodo.done.length / total) * 100)
+
+  const removeUser = useUserStore(state => state.removeUser)
+
   return (
     <Link to={`/board/${section}/${user.id}`}>
       <div className="p-4 group shadow-dark  min-h-30 min-w-60  hover:bg-hover-item flex flex-col justify-between  transition-colors duration-300 bg-card text-text-primary  rounded-md">
         <div className="flex gap-x-1 items-center justify-between ">
-          <div className="flex items-center space-x-2 ">
-            <span className="font-DanaDemiBold text-xl">{user.name} </span>
+          <div className="flex items-center space-x-4  ">
+            <span className="font-DanaDemiBold text-xl inline-block">{user.name} </span>
+            <button
+              onClick={e => {
+                e.preventDefault()
+                e.stopPropagation()
+                removeUser(user.id)
+              }}
+              className="text-text-secondary/50 p-2 transition-colors hover:bg-action-delete hover:text-white rounded-full cursor-pointer "
+            >
+              <DeleteIcon className="size-5" />
+            </button>
           </div>
           {user.avatarUrl ? (
             <img src={user.avatarUrl} alt="person-avatar" />

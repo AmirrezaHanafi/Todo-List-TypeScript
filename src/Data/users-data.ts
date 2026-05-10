@@ -25,7 +25,7 @@ const randomTasks = (): List => ({
     .map(t => ({ id: crypto.randomUUID(), title: t }))
 })
 
-const rolesBySection: Record<string, string[]> = {
+export const rolesBySection: Record<string, string[]> = {
   FrontEnd: ['توسعه‌دهنده فرانت‌اند', 'طراح رابط کاربری', 'مهندس UI', 'مسئول فرانت‌'],
   BackEnd: ['توسعه‌دهنده بک‌اند', 'مهندس Node.js', 'مدیر پایگاه داده', 'برنامه‌نویس سرور'],
   NetworkSecurity: ['کارشناس امنیت', 'ادمین شبکه', 'تحلیل‌گر آسیب‌پذیری', 'ناظر امنیت'],
