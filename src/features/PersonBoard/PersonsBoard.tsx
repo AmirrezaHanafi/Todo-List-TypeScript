@@ -18,10 +18,7 @@ export default function PersonsBoard() {
     <div className="  border-2 border-border  bg-line mx-6 rounded-lg p-6   ">
       <div className=" flex items-center justify-between mb-5 gap-x-1 ">
         <span className="font-DanaDemiBold text-lg md:text-3xl">صفحه برنامه ریزی {user.name}</span>
-        <Link
-          to={`/board/${section}`}
-          className="flex text-sm items-center gap-x-2 px-2 md:px-4 py-2 bg-card/50 rounded-md transition-all hover:bg-card/90 "
-        >
+        <Link to={`/${section}`} className="flex text-sm items-center gap-x-2 px-2 md:px-4 py-2 bg-card/50 rounded-md transition-all hover:bg-card/90 ">
           بازگشت به بخش <ArrowLeft className="size-5 md:size-6" />
         </Link>
       </div>

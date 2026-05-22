@@ -17,7 +17,7 @@ export default function PersonCart({ user, section }: CartProps) {
   const removeUser = useUserStore(state => state.removeUser)
 
   return (
-    <Link to={`/board/${section}/${user.id}`}>
+    <Link to={`/${section}/${user.id}`}>
       <div className="p-4 group shadow-dark  min-h-30 min-w-60  hover:bg-hover-item flex flex-col justify-between  transition-colors duration-300 bg-card text-text-primary  rounded-md">
         <div className="flex gap-x-1 items-center justify-between ">
           <div className="flex items-center space-x-4  ">

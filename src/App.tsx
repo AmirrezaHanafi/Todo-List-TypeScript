@@ -10,8 +10,8 @@ export default function App() {
       <Routes>
         <Route element={<RootLayout />}>
           <Route index element={<RootBoard />} />
-          <Route path="/board/:section" element={<GroupBoard />} />
-          <Route path="/board/:section/:id" element={<PersonsBoard />} />
+          <Route path="/:section" element={<GroupBoard />} />
+          <Route path="/:section/:id" element={<PersonsBoard />} />
 
           <Route />
           <Route path="*" element={<NotFound />} />
