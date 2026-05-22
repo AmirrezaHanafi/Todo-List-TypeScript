@@ -56,7 +56,32 @@ const namesFirst = [
 ]
 const namesLast = ['کریمی', 'بهزادی', 'مرادی', 'شریفی', 'یزدانی', 'موسوی', 'اکبری', 'محمدی', 'جعفری', 'فرجی', 'نیکفر', 'قاسمی', 'رحمانی']
 
-export const sections = ['FrontEnd', 'BackEnd', 'NetworkSecurity', 'DataAnalysis', 'HumanResources', 'Design']
+export const sections = [
+  {
+    section: 'FrontEnd',
+    description: 'جایی که دکمه‌ها رو قشنگ می‌کنیم تا کاربر حس کنه برنامه‌نویسیم!'
+  },
+  {
+    section: 'BackEnd',
+    description: 'پشت صحنه‌ای که همه چیز خرابه ولی جلو همه چیز کار می‌کنه!'
+  },
+  {
+    section: 'NetworkSecurity',
+    description: 'جایی که هکرا رو دعوا می‌کنیم و بعد خودمون رمز وای‌فای رو یادمون میره!'
+  },
+  {
+    section: 'DataAnalysis',
+    description: 'اکسل باز حرفه‌ای که با چارت و نمودار به بقیه ثابت می‌کنه چیزی نفهمیدن!'
+  },
+  {
+    section: 'HumanResources',
+    description: 'کسایی که فکر می‌کنن با یه پیتزا پارتی می‌تونن حقوق کم رو جبران کنن!'
+  },
+  {
+    section: 'Design',
+    description: 'هنرمندایی که ۵۰ بار یه دکمه رو جابجا می‌کنن تا "حس درستی" بگیرن!'
+  }
+]
 
 const generateUser = (id: number, section: string): User => {
   const f = namesFirst[Math.floor(Math.random() * namesFirst.length)]
@@ -120,10 +145,15 @@ const UsersData: User[] = [
   }
 ]
 for (const section of sections) {
-  const numberOfPeople = section === 'FrontEnd' || section === 'BackEnd' ? 10 : section === 'NetworkSecurity' || section === 'DataAnalysis' ? 8 : 7
+  const numberOfPeople =
+    section.section === 'FrontEnd' || section.section === 'BackEnd'
+      ? 10
+      : section.section === 'NetworkSecurity' || section.section === 'DataAnalysis'
+        ? 8
+        : 7
 
   for (let i = 0; i < numberOfPeople; i++) {
-    UsersData.push(generateUser(currentId++, section))
+    UsersData.push(generateUser(currentId++, section.section))
   }
 }
 
