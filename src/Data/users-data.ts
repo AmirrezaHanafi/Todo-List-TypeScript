@@ -142,6 +142,16 @@ const UsersData: User[] = [
     section: 'FrontEnd',
     role: 'مسئول فرانت اند',
     listTodo: randomTasks()
+  },
+  {
+    id: 5,
+    name: 'admin',
+    email: 'amirreza@gmail.com',
+    password: '123456789',
+    avatarUrl: null,
+    section: 'Admin',
+    role: 'Admin',
+    listTodo: randomTasks()
   }
 ]
 for (const section of sections) {

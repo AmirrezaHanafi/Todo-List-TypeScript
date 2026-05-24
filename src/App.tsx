@@ -1,31 +1,51 @@
-import { Routes, Route, useParams, Navigate } from 'react-router-dom'
-import RootLayout from './layout/RootLayout.tsx'
-import RootBoard from './features/RootBoard/components/RootBoard.tsx'
+import { useState } from 'react'
+import LoginPage from './features/login/LoginPage.tsx'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import PersonsBoard from './features/PersonBoard/PersonsBoard.tsx'
 import GroupBoard from './features/GroupBoard/GroupBoard.tsx'
 import NotFound from './features/404/NotFound.tsx'
+import RootBoard from './features/RootBoard/components/RootBoard.tsx'
+import RootLayout from './layout/RootLayout.tsx'
+import ProtectedRoute from './features/protect/ProtectedRoute.tsx'
+import usersData from './Data/users-data.ts'
 
-const validSections = ['FrontEnd', 'BackEnd', 'NetworkSecurity', 'DataAnalysis', 'HumanResources', 'Design']
-
-function GroupBoardWrapper() {
-  const { section } = useParams()
-  return validSections.includes(section!) ? <GroupBoard /> : <Navigate to="/404" />
-}
-
-function PersonsBoardWrapper() {
-  const { section } = useParams()
-  return validSections.includes(section!) ? <PersonsBoard /> : <Navigate to="/404" />
+interface AuthType {
+  id: number
+  role: string
+  isAuthenticated?: boolean
 }
 
 export default function App() {
+  const [auth] = useState<AuthType>(() => JSON.parse(localStorage.getItem('auth') || '{}'))
+
+  // ۱. اگر لاگین نیست
+  if (!auth.isAuthenticated) return <LoginPage />
+
+  if (auth.role !== 'Admin') {
+    const user = usersData.find(u => u.id === auth.id)
+    if (user && window.location.pathname === '/') {
+      return <Navigate to={`/${user.section}/${user.id}`} replace />
+    }
+  }
+
   return (
     <Routes>
       <Route element={<RootLayout />}>
-        <Route index element={<RootBoard />} />
-        <Route path="/:section" element={<GroupBoardWrapper />} />
-        <Route path="/:section/:id" element={<PersonsBoardWrapper />} />
-        <Route path="/404" element={<NotFound />} />
+        {auth.role === 'Admin' && <Route index element={<RootBoard />} />}
+
+        <Route
+          path="/:section/:id"
+          element={
+            <ProtectedRoute>
+              <PersonsBoard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="/:section" element={auth.role === 'Admin' ? <GroupBoard /> : <Navigate to="/404" />} />
+
         <Route path="*" element={<NotFound />} />
+        <Route path="404" element={<NotFound />} />
       </Route>
     </Routes>
   )
