@@ -8,8 +8,9 @@ import RootBoard from './features/RootBoard/components/RootBoard.tsx'
 import RootLayout from './layout/RootLayout.tsx'
 import ProtectedRoute from './features/protect/ProtectedRoute.tsx'
 import usersData from './Data/users-data.ts'
+import AccessDenied from './components/AccessDenied.tsx'
 
-interface AuthType {
+export interface AuthType {
   id: number
   role: string
   isAuthenticated?: boolean
@@ -18,7 +19,6 @@ interface AuthType {
 export default function App() {
   const [auth] = useState<AuthType>(() => JSON.parse(localStorage.getItem('auth') || '{}'))
 
-  // ۱. اگر لاگین نیست
   if (!auth.isAuthenticated) return <LoginPage />
 
   if (auth.role !== 'Admin') {
@@ -44,8 +44,8 @@ export default function App() {
 
         <Route path="/:section" element={auth.role === 'Admin' ? <GroupBoard /> : <Navigate to="/404" />} />
 
+        <Route path="/access-denied" element={<AccessDenied />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="404" element={<NotFound />} />
       </Route>
     </Routes>
   )

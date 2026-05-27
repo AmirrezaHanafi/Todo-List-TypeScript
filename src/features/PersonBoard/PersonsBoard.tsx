@@ -5,20 +5,24 @@ import ItemCart from './ItemCart.tsx'
 import PlusIcon from '../../components/icons/PlusIcon.tsx'
 import { useRef } from 'react'
 import CreateItemModal from '../../components/Modals/CreateItemModal.tsx'
+import type { AuthType } from '../../App.tsx'
 
 export default function PersonsBoard() {
   const UsersData = useUserStore(state => state.userData)
   const { id, section } = useParams()
   const modalRef = useRef<HTMLDialogElement | null>(null)
   const user = UsersData.find(u => u.id === Number(id))
-
+  const localdata: AuthType = JSON.parse(localStorage.getItem('auth') || '{}')
   if (!user) return <div>کاربر پیدا نشد</div>
 
   return (
     <div className="  border-2 border-border  bg-line mx-6 rounded-lg p-6   ">
       <div className=" flex items-center justify-between mb-5 gap-x-1 ">
         <span className="font-DanaDemiBold text-lg md:text-3xl">صفحه برنامه ریزی {user.name}</span>
-        <Link to={`/${section}`} className="flex text-sm items-center gap-x-2 px-2 md:px-4 py-2 bg-card/50 rounded-md transition-all hover:bg-card/90 ">
+        <Link
+          to={`/${section}`}
+          className={`${localdata.role === 'Admin' ? 'flex' : 'hidden'} text-sm items-center gap-x-2 px-2 md:px-4 py-2 bg-card/50 rounded-md transition-all hover:bg-card/90 `}
+        >
           بازگشت به بخش <ArrowLeft className="size-5 md:size-6" />
         </Link>
       </div>

@@ -14,5 +14,5 @@ export default function ProtectedRoute({ children }: { children: ReactNode }) {
   }
 
   // اگر سعی کرد دسترسی غیرمجاز داشته باشد
-  return <Navigate to="/404" replace />
+  return <Navigate to={`/access-denied`} />
 }

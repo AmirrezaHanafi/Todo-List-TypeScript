@@ -85,6 +85,31 @@ export default function LoginPage() {
       >
         {loginError}
       </div>
+      <div
+        id="guide-line"
+        className={`fixed top-10 left-10 transition-all duration-500 ease-in-out transform 
+          bg-card text-white p-4 rounded-md shadow-lg z-50`}
+      >
+        <div className="flex flex-col justify-center items-center gap-y-3">
+          <span className="font-DanaMedium  text-center text-2xl w-full">راهنمایی</span>
+          <div className="text-sm">
+            <div className="mb-3">
+              <span className="text-sm"> برای دستیابی به رول ادمین</span>
+              <div dir="ltr">
+                <span className="block">Email: amirreza@gmail.com</span>
+                <span className="block">Password :123456789</span>
+              </div>
+            </div>
+            <div>
+              <span> برای دستیابی به رول یوزر</span>
+              <div dir="ltr">
+                <span className="block">shayan@mail.com</span>
+                <span className="block">Password :shayan@999</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }
